@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/index';
 
 import {ControllerDataset} from './controller_dataset';
 import * as ui from './ui';
@@ -133,7 +133,6 @@ async function predict() {
     predictedClass.dispose();
 
     ui.predictClass(classId);
-    // snake.arrowSetting(classId)
     await tf.nextFrame();
   }
   ui.donePredicting();
@@ -147,7 +146,7 @@ document.getElementById('train').addEventListener('click', async () => {
   train();
 });
 document.getElementById('predict').addEventListener('click', () => {
-  ui.startPacman();
+  ui.startGame();
   isPredicting = true;
   predict();
 });

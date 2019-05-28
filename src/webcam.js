@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/index';
 
 /**
  * A class that wraps webcam video elements to capture Tensor4Ds.

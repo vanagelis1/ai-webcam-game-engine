@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/index';
 
 /**
  * A dataset for webcam controls which allows the user to add example Tensors

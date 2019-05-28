@@ -1,5 +1,5 @@
-import * as tf from '@tensorflow/tfjs';
-import * as snake from './snake';
+import * as tf from '@tensorflow/tfjs/dist/index';
+import * as game from '../game';
 
 const CONTROLS = ['up', 'down', 'left', 'right', 'downLeft', 'downRight', 'upRight', 'upLeft'];
 const CONTROL_CODES = [38, 40, 37, 39, 41, 42, 43, 44];
@@ -21,12 +21,12 @@ export const getEpochs = () => +20;
 export const getDenseUnits = () => +100;
 const statusElement = document.getElementById('status');
 
-export function startPacman() {
-  snake.init()
+export function startGame() {
+  game.init()
 }
 
 export function predictClass(classId) {
-  snake.arrowSetting(CONTROL_CODES[classId])
+  game.arrowSetting(CONTROL_CODES[classId])
   document.body.setAttribute('data-active', CONTROLS[classId]);
 }
 
@@ -86,7 +86,7 @@ async function handler(label, delay) {
   }, 1000);
 
   let remainingTime = await sleep(delay)
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 50; i++) {
 
     const total = document.getElementById(className + '-total');
     addExampleHandler(label);
@@ -97,28 +97,28 @@ async function handler(label, delay) {
   }
 }
 
-upButton.addEventListener('mousedown', () => handler(0, 0));
+upButton.addEventListener('mousedown', () => handler(0, 3000));
 upButton.addEventListener('mouseup', () => mouseDown = false);
 
-downButton.addEventListener('mousedown', () => handler(1, 0));
+downButton.addEventListener('mousedown', () => handler(1, 3000));
 downButton.addEventListener('mouseup', () => mouseDown = false);
 
-leftButton.addEventListener('mousedown', () => handler(2, 0));
+leftButton.addEventListener('mousedown', () => handler(2, 3000));
 leftButton.addEventListener('mouseup', () => mouseDown = false);
 
-rightButton.addEventListener('mousedown', () => handler(3, 0));
+rightButton.addEventListener('mousedown', () => handler(3, 3000));
 rightButton.addEventListener('mouseup', () => mouseDown = false);
 
-upLeftButton.addEventListener('mousedown', () => handler(7, 0));
+upLeftButton.addEventListener('mousedown', () => handler(7, 3000));
 upLeftButton.addEventListener('mouseup', () => mouseDown = false);
 
-downLeftButton.addEventListener('mousedown', () => handler(4, 0));
+downLeftButton.addEventListener('mousedown', () => handler(4, 3000));
 downLeftButton.addEventListener('mouseup', () => mouseDown = false);
 
-upRightButton.addEventListener('mousedown', () => handler(6, 0));
+upRightButton.addEventListener('mousedown', () => handler(6, 3000));
 upRightButton.addEventListener('mouseup', () => mouseDown = false);
 
-downRightButton.addEventListener('mousedown', () => handler(5, 0));
+downRightButton.addEventListener('mousedown', () => handler(5, 3000));
 downRightButton.addEventListener('mouseup', () => mouseDown = false);
 
 export function drawThumb(img, label) {
