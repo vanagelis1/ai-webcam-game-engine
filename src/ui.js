@@ -67,24 +67,20 @@ function sleep(duration) {
 
 async function handler(label, delay) {
   const className = CONTROLS[label];
-  var timeleft = 3;
-  let canvas = document.getElementById(className + '-thumb');
-  let ctx = canvas.getContext("2d");
-  var downloadTimer = setInterval(function(){
 
-    ctx.font = "30px Arial";
-    ctx.fillStyle = "white";
-    ctx.fillText(timeleft, 10, 50);
-    ctx.clearRect(0,0,224,224);
-
-
-    timeleft -= 1;
-    if(timeleft <= 0){
-      clearInterval(downloadTimer);
-      // document.getElementById(className + '-total').innerHTML = "Finished"
+  let timesRun = 0;
+  let interval = setInterval(function(){
+    timesRun += 1;
+    if (timesRun % 2 === 0) {
+      document.body.setAttribute('data-active', CONTROLS[label]);
+    } else {
+      document.body.removeAttribute('data-active');
     }
-  }, 1000);
-
+    if(timesRun === 12){
+      clearInterval(interval);
+    }
+    //do whatever here..
+  }, 250);
   let remainingTime = await sleep(delay)
   for (let i = 0; i < 50; i++) {
 
